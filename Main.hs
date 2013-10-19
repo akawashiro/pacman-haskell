@@ -22,7 +22,15 @@ main = do
         w = floor LevelGraphics.levelItemSize * (levelWidth . worldLevel $ world)
         h = floor LevelGraphics.levelItemSize * (levelHeight . worldLevel $ world)
 
-    createGameWindow w h
+--    createGameWindow w h
+    --GLUTの初期化
+    initialDisplayMode $= [RGBAMode, DoubleBuffered]
+    initialWindowSize $= Size 640 480
+    initialize "" []
+
+    --ウィンドウを作る
+    createWindow "Pacman"
+
     Graphics.setDrawingOptions
 
     worldRef <- newIORef world
